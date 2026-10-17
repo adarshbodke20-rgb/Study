@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET Study Target Tracker</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1120;
+  color: white;
+}
+
+header {
+  padding: 24px 15px;
+  text-align: center;
+  background: linear-gradient(135deg, #123c69, #087f8c);
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 27px;
+}
+
+header p {
+  margin: 0;
+  color: #dbeafe;
+}
+
+.owner {
+  margin: 15px;
+  padding: 18px;
+  background: #172033;
+  border: 1px solid #334155;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.owner h2 {
+  margin: 0 0 8px;
+}
+
+.owner p {
+  color: #cbd5e1;
+  margin: 7px;
+}
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #25D366;
+  color: #062b16;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  padding: 0 15px 30px;
+}
+
+.card {
+  background: #172033;
+  border: 1px solid #29364d;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 7px 0;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0b1120;
+  color: white;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  padding: 11px 15px;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: #082f49;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px 3px 5px 0;
+}
+
+.progress {
+  height: 12px;
+  background: #334155;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+  transition: width .3s;
+}
+
+.subject {
+  padding: 12px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.subject:last-child {
+  border-bottom: none;
+}
+
+label {
+  display: block;
+  margin: 12px 0;
+  color: #e2e8f0;
+}
+
+label input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.small {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎯 NEET Target Tracker</h1>
+  <p>Plan smart. Study consistently. Achieve your target.</p>
+</header>
+
+<!-- OWNER DETAILS -->
+<section class="owner">
+  <h2>👑 Owner: Vishwakarma</h2>
+  <p>📞 Contact: 8888888888</p>
+
+  <a class="whatsapp"
+     href="https://wa.me/918888888888?text=Hi"
+     target="_blank"
+     rel="noopener">
+     🟢 WhatsApp Owner
+  </a>
+
+  <p class="small">Tap to open WhatsApp with "Hi" ready to send.</p>
+</section>
+
+<main class="container">
+
+  <!-- DAILY TARGET -->
+  <section class="card">
+    <h2>📅 Daily Study Targets</h2>
+
+    <label for="studyDate">Study date</label>
+    <input type="date" id="studyDate">
+
+    <label for="target">Daily study target (hours)</label>
+    <input type="number" id="target" min="1" max="24" value="12">
+
+    <label for="completed">Hours studied today</label>
+    <input type="number" id="completed" min="0" max="24" value="0">
+
+    <p id="hoursText">0 / 12 hours completed</p>
+
+    <div class="progress">
+      <div class="bar" id="hoursBar"></div>
+    </div>
+  </section>
+
+  <!-- SUBJECT TRACKER -->
+  <section class="card">
+    <h2>📚 Subject Progress</h2>
+
+    <div class="subject">
+      <h3>🔵 Physics</h3>
+      <label for="physicsDone">Chapters completed</label>
+      <input type="number" id="physicsDone" min="0" value="0">
+      <label for="physicsTotal">Total chapters to track</label>
+      <input type="number" id="physicsTotal" min="1" value="20">
+    </div>
+
+    <div class="subject">
+      <h3>🟢 Chemistry</h3>
+      <label for="chemistryDone">Chapters completed</label>
+      <input type="number" id="chemistryDone" min="0" value="0">
+      <label for="chemistryTotal">Total chapters to track</label>
+      <input type="number" id="chemistryTotal" min="1" value="20">
+    </div>
+
+    <div class="subject">
+      <h3>🟣 Biology</h3>
+      <label for="biologyDone">Chapters completed</label>
+      <input type="number" id="biologyDone" min="0" value="0">
+      <label for="biologyTotal">Total chapters to track</label>
+      <input type="number" id="biologyTotal" min="1" value="30">
+    </div>
+
+    <h3 id="overallText">Overall progress: 0%</h3>
+    <div class="progress">
+      <div class="bar" id="overallBar"></div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="card">
+    <h2>✅ Today's Checklist</h2>
+
+    <label><input type="checkbox" class="task"> Complete today's lectures</label>
+    <label><input type="checkbox" class="task"> Finish DPP questions</label>
+    <label><input type="checkbox" class="task"> Solve NEET PYQs</label>
+    <label><input type="checkbox" class="task"> Revise NCERT Biology</label>
+    <label><input type="checkbox" class="task"> Revise short notes</label>
+    <label><input type="checkbox" class="task"> Analyse mistakes</label>
+
+    <p id="taskText">0 / 6 tasks completed</p>
+  </section>
+
+  <!-- NOTES -->
+  <section class="card">
+    <h2>📝 Study Notes</h2>
+    <textarea id="notes"
+      placeholder="Write today's targets, weak concepts and mistakes..."
+      style="width:100%;min-height:120px;padding:12px;border-radius:8px;background:#0b1120;color:white;border:1px solid #475569;font:15px Arial"></textarea>
+    <p class="small">Your progress and notes are saved in this browser.</p>
+    <button id="reset">Reset this date's data</button>
+  </section>
+
+</main>
+
+<footer>
+  NEET Target Tracker | Stay focused. Keep improving. 🚀
+</footer>
+
+<script>
+const ids = [
+  "studyDate", "target", "completed",
+  "physicsDone", "physicsTotal",
+  "chemistryDone", "chemistryTotal",
+  "biologyDone", "biologyTotal", "notes"
+];
+
+const today = new Date();
+const localDate = [
+  today.getFullYear(),
+  String(today.getMonth() + 1).padStart(2, "0"),
+  String(today.getDate()).padStart(2, "0")
+].join("-");
+
+const dateInput = document.getElementById("studyDate");
+dateInput.value = localDate;
+
+function storageKey() {
+  return "neetTracker_" + dateInput.value;
+}
+
+function save() {
+  const data = {};
+
+  ids.forEach(id => {
+    data[id] = document.getElementById(id).value;
+  });
+
+  data.tasks = [...document.querySelectorAll(".task")]
+    .map(task => task.checked);
+
+  try {
+    localStorage.setItem(storageKey(), JSON.stringify(data));
+  } catch (error) {
+    console.log("Could not save data", error);
+  }
+
+  update();
+}
+
+function load() {
+  let data = {};
+
+  try {
+    data = JSON.parse(localStorage.getItem(storageKey()) || "{}");
+  } catch (error) {
+    data = {};
+  }
+
+  ids.forEach(id => {
+    const
